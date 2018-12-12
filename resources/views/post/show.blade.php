@@ -6,7 +6,7 @@
                 <p>{{$post->body}}</p>
                 <footer class="card-footer">
                     Author: <a href="{{url('/users/' . $post->author->id)}}">{{$post->author->name}}</a>
-                    <i class="text-right">Posted: {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans()}}</i>
+                    <i class="text-right">Posted: {{ $post->getCreatedAtFormatted()}}</i>
                 </footer>
                 @auth
                     @if(auth() && (auth()->user()->id == $post->user_id || auth()->user()->is_admin))

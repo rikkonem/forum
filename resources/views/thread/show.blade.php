@@ -11,7 +11,7 @@
                 <p class="card-text">{{$thread->body}}</p>
                 <footer class="card-footer">
                     Author: <a href="{{url('/users/' . $thread->author->id)}}">{{$thread->author->name}}</a>
-                    <i class="text-right">Posted: {{ \Carbon\Carbon::parse($thread->created_at)->diffForHumans()}}</i>
+                    <i class="text-right">Posted: {{ $thread->getCreatedAtFormatted()}}</i>
                 </footer>
 
             @auth

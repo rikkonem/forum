@@ -20,4 +20,9 @@ class Thread extends Model
     }
 
 
+    public function getCreatedAtFormatted()
+    {
+        return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
+
 }

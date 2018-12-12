@@ -7,7 +7,7 @@
            <i>Admin</i>
        @endif
        @include('user.profile-picture')
-       <p>Member since {{\Carbon\Carbon::parse($user->created_at)->toFormattedDateString()}}</p>
+       <p>Member since {{$user->getCreatedAtFormatted()}}</p>
 
        @include('user.stats')
 

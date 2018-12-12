@@ -20,5 +20,10 @@ class Post extends Model
         return $this->belongsTo(Thread::class, 'thread_id');
     }
 
+    public function getCreatedAtFormatted()
+    {
+        return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
+
 
 }

@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->threads()->latest()->first();
     }
 
+    public function getCreatedAtFormatted()
+    {
+        return \Carbon\Carbon::parse($this->created_at)->toFormattedDateString();
+    }
+
 
 
 }
