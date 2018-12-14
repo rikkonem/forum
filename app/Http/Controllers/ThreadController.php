@@ -49,11 +49,15 @@ class ThreadController extends Controller
      */
     public function store(ThreadRequest $request)
     {
-        $valid_data = $request->all();
+        $valid_data = $request->only('title', 'body');
 
         $valid_data['user_id'] = auth()->id();
 
+        $tags = explode(",", str_replace(' ', '',$request->get('tags')));
+
         $thread = Thread::create($valid_data);
+
+        empty($tags[0]) ? null : $thread->tag($tags);
 
         Session::flash('message', 'Thread has been created.');
 
@@ -100,9 +104,13 @@ class ThreadController extends Controller
      */
     public function update(ThreadRequest $request, Thread $thread)
     {
-        $validated = $request->all();
+        $validated = $request->only('title', 'body');
 
         $thread->update($validated);
+
+        $tags = explode(",", str_replace(' ', '',$request->get('tags')));
+
+        empty($tags[0]) ? $thread->untag() : $thread->retag($tags);
 
         Session::flash('message', 'Thread has been edited.');
 

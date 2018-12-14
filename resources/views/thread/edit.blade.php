@@ -15,6 +15,10 @@
               <textarea name="body" class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" required>{{$thread->body}}</textarea>
           </div>
           <div class="form-group">
+              <label for="tags">Tags</label>
+              <input type="text" name="tags" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}" value="{{$thread->getTagsSeparatedByComma()}}">
+          </div>
+          <div class="form-group">
              <input type="submit" value="send" class="btn btn-primary">
           </div>
       </form>

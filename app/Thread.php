@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use \Conner\Tagging\Taggable;
+
     protected $fillable = ['title', 'body', 'user_id'];
 
 
@@ -23,6 +25,11 @@ class Thread extends Model
     public function getCreatedAtFormatted()
     {
         return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    public function getTagsSeparatedByComma()
+    {
+        return implode(',', $this->tagNames());
     }
 
 }

@@ -13,6 +13,10 @@
               <textarea name="body" class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}"></textarea>
           </div>
           <div class="form-group">
+              <label for="tags">Tags</label>
+              <input type="text" name="tags" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}">
+          </div>
+          <div class="form-group">
              <input type="submit" value="create" class="btn btn-primary">
           </div>
       </form>

@@ -9,6 +9,9 @@
 
             <div class="card-body">
                 <p class="card-text">{{$thread->body}}</p>
+                @foreach($thread->tags as $tag)
+                    <b>{{$tag->slug}}</b>
+                @endforeach
                 <footer class="card-footer">
                     Author: <a href="{{url('/users/' . $thread->author->id)}}">{{$thread->author->name}}</a>
                     <i class="text-right">Posted: {{ $thread->getCreatedAtFormatted()}}</i>
