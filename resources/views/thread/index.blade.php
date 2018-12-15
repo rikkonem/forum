@@ -17,5 +17,8 @@
         @else
             <p>There is no threads, create you own</p>
         @endif
+        <hr>
+        @include('thread.tags')
+
     </section>
 @endsection

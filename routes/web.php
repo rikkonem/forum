@@ -50,6 +50,7 @@ Route::post('/change-email', 'ChangeEmailController@update');
 Route::post('/change-profile-picture', 'ProfilePictureController@update');
 
 
+Route::get('/threads-with-tag/{tag}', 'SearchByTag@show');
 
 Auth::routes();
 

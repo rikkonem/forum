@@ -25,8 +25,11 @@ class ThreadController extends Controller
     {
         $threads = Thread::with('tagged')->paginate(10);
 
+        $tags = Thread::existingTags()->sortByDesc('count');
+
         return view('thread.index', [
-            'threads' => $threads
+            'threads' => $threads,
+            'tags' => $tags
         ]);
     }
 
