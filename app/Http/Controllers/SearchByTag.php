@@ -17,7 +17,7 @@ class SearchByTag extends Controller
 
         return view('thread/withTags')->with([
             'threads' => $threads,
-            'tag' => $tag,
+            'selectedTag' => $tag,
             'tags' => $tags
         ]);
 

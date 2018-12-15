@@ -3,7 +3,7 @@
 @section('content')
     <section>
         @if($threads->count())
-            <h2>Threads with "{{$tag}}" tag</h2>
+            <h2>Threads with <span class="badge badge-primary">{{$selectedTag}}</span> tag</h2>
             @foreach($threads as $thread)
                 <div>
                     <h2><a href="{{url('threads/' . $thread->id)}}">{{$thread->title}}</a></h2>
@@ -16,7 +16,7 @@
             {{$threads->links()}}
 
         @else
-            <p>There is no threads with "{{$tag}}" tag.</p>
+            <p>There is no threads with <span class="badge badge-primary">{{$selectedTag}}</span> tag.</p>
         @endif
         <hr>
         @include('thread.tags')
