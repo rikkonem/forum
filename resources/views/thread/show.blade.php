@@ -10,7 +10,7 @@
             <div class="card-body">
                 <p class="card-text">{{$thread->body}}</p>
                 @foreach($thread->tags as $tag)
-                    <b>{{$tag->slug}}</b>
+                    <span class="badge badge-primary">{{$tag->slug}}</span>
                 @endforeach
                 <footer class="card-footer">
                     Author: <a href="{{url('/users/' . $thread->author->id)}}">{{$thread->author->name}}</a>

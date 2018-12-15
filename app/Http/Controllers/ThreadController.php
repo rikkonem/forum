@@ -23,7 +23,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $threads = Thread::paginate(10);
+        $threads = Thread::with('tagged')->paginate(10);
 
         return view('thread.index', [
             'threads' => $threads

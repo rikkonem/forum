@@ -6,6 +6,9 @@
             @foreach($threads as $thread)
                     <div>
                         <h2><a href="{{url('threads/' . $thread->id)}}">{{$thread->title}}</a></h2>
+                        @foreach($thread->tags as $tag)
+                            <span class="badge badge-primary">{{$tag->slug}}</span>
+                        @endforeach
                     </div>
                 @endforeach
 
