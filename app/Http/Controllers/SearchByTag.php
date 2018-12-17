@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
+use App\Http\Requests\TagRequest;
 
 class SearchByTag extends Controller
 {
 
-    public function show($tag)
+    public function show(TagRequest $request)
     {
 
-        $threads = Thread::withAnyTag($tag)->paginate(10);
+        $selectedTags = $request->only('tags');
+
+        $threads = Thread::withAnyTag($selectedTags)->paginate(10);
 
         $tags = Thread::existingTags()->sortByDesc('count');
 
-
         return view('thread/withTags')->with([
             'threads' => $threads,
-            'selectedTag' => $tag,
+            'selectedTags' => $selectedTags["tags"],
             'tags' => $tags
         ]);
 
