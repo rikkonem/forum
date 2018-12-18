@@ -22,7 +22,7 @@ class ChangePasswordController extends Controller
              'new-password' => 'required|min:6',
              'confirmed-password' => 'required|min:6|same:new-password',
              'current-password' => 'required'
-        ]);
+         ]);
     }
 
     public function update(Request $request)
@@ -32,19 +32,15 @@ class ChangePasswordController extends Controller
 
         $user = Auth::user();
 
-        if (Hash::check(request('current-password'), $user->password))
-        {
+        if (Hash::check(request('current-password'), $user->password)) {
             $user->password =  bcrypt($request->get('new-password'));
             $user->save();
 
             Session::flash('message', 'Password has been edited.');
-
-
         } else {
             Session::flash('error', 'Current password is incorrect');
         }
 
         return redirect()->back();
     }
-
 }

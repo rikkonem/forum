@@ -21,5 +21,4 @@ class UserThreadController extends Controller
             'threads' =>  $threads
         ]);
     }
-
 }

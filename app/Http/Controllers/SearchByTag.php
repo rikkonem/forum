@@ -22,7 +22,5 @@ class SearchByTag extends Controller
             'selectedTags' => $selectedTags["tags"],
             'tags' => $tags
         ]);
-
     }
-
 }

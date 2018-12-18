@@ -53,7 +53,4 @@ class User extends Authenticatable
     {
         return \Carbon\Carbon::parse($this->created_at)->toFormattedDateString();
     }
-
-
-
 }

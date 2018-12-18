@@ -39,7 +39,7 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/my-threads', 'UserThreadController@index');
 
 
-Route::get('/settings', function() {
+Route::get('/settings', function () {
     return view('settings.settings');
 })->middleware('auth');
 
@@ -53,5 +53,3 @@ Route::post('/change-profile-picture', 'ProfilePictureController@update');
 Route::get('/threads-with-tags', 'SearchByTag@show');
 
 Auth::routes();
-
-

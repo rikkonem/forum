@@ -31,5 +31,4 @@ class Thread extends Model
     {
         return implode(',', $this->tagNames());
     }
-
 }

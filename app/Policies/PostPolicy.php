@@ -21,22 +21,16 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-
         return $user->id == $post->user_id || $user->is_admin;
-
     }
 
     public function edit(User $user, Post $post)
     {
-
         return $user->id == $post->user_id || $user->is_admin;
     }
 
     public function update(User $user, Post $post)
     {
-
         return $user->id == $post->user_id || $user->is_admin;
     }
-
-
 }

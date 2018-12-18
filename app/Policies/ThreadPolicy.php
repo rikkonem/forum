@@ -32,6 +32,4 @@ class ThreadPolicy
     {
         return $user->id == $thread->user_id || $user->is_admin;
     }
-
-
 }

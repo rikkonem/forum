@@ -11,9 +11,7 @@ class ThreadController extends Controller
 
     public function __construct()
     {
-
         $this->middleware('auth')->except('index', 'show');
-
     }
 
     /**
@@ -56,7 +54,7 @@ class ThreadController extends Controller
 
         $valid_data['user_id'] = auth()->id();
 
-        $tags = explode(",", str_replace(' ', '',$request->get('tags')));
+        $tags = explode(",", str_replace(' ', '', $request->get('tags')));
 
         $thread = Thread::create($valid_data);
 
@@ -111,14 +109,13 @@ class ThreadController extends Controller
 
         $thread->update($validated);
 
-        $tags = explode(",", str_replace(' ', '',$request->get('tags')));
+        $tags = explode(",", str_replace(' ', '', $request->get('tags')));
 
         empty($tags[0]) ? $thread->untag() : $thread->retag($tags);
 
         Session::flash('message', 'Thread has been edited.');
 
         return redirect('/threads/' . $thread->id);
-
     }
 
     /**

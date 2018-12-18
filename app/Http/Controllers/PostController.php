@@ -11,9 +11,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-
         $this->middleware('auth');
-
     }
 
 
@@ -39,11 +37,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-
         return view('post.edit', [
             'post' => $post
         ]);
-
     }
 
 
@@ -63,7 +59,6 @@ class PostController extends Controller
         Session::flash('message', 'Post has been edited.');
 
         return redirect('/threads/' . $post->thread_id);
-
     }
 
 

@@ -30,8 +30,7 @@ class ChangeEmailController extends Controller
 
         $user = Auth::user();
 
-        if (Hash::check(request('password'), $user->password))
-        {
+        if (Hash::check(request('password'), $user->password)) {
             $user->email = $request->get('new-email');
             $user->save();
 

@@ -24,6 +24,4 @@ class Post extends Model
     {
         return \Carbon\Carbon::parse($this->created_at)->diffForHumans();
     }
-
-
 }
