@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ChangeEmailRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -15,19 +15,8 @@ class ChangeEmailController extends Controller
         $this->middleware('auth');
     }
 
-    public function confirm(Request $request)
+    public function update(ChangeEmailRequest $request)
     {
-        return  $this->validate($request, [
-            'password' => 'required|min:6',
-            'new-email' => 'required|email|unique:users,email'
-        ]);
-    }
-
-    public function update(Request $request)
-    {
-
-        $this->confirm($request);
-
         $user = Auth::user();
 
         if (Hash::check(request('password'), $user->password)) {

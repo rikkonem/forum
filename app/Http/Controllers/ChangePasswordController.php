@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ChangeEmailRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -16,20 +16,8 @@ class ChangePasswordController extends Controller
     }
 
 
-    public function confirmPassword(Request $request)
+    public function update(ChangeEmailRequest $request)
     {
-         return  $this->validate($request, [
-             'new-password' => 'required|min:6',
-             'confirmed-password' => 'required|min:6|same:new-password',
-             'current-password' => 'required'
-         ]);
-    }
-
-    public function update(Request $request)
-    {
-
-        $this->confirmPassword($request);
-
         $user = Auth::user();
 
         if (Hash::check(request('current-password'), $user->password)) {
