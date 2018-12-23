@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Auth;
 class ProfilePictureController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function update(ProfilePictureRequest $request)
     {
-
         $user = Auth::user();
-
         $name = "profile_picture_" . $user->id . "." . $request->file('profile_picture')->getClientOriginalExtension();
         $request->profile_picture->storeAs('profile-pictures', $name);
         $user->profile_picture = $name;

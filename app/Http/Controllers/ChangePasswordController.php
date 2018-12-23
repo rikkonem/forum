@@ -15,7 +15,6 @@ class ChangePasswordController extends Controller
         $this->middleware('auth');
     }
 
-
     public function update(ChangeEmailRequest $request)
     {
         $user = Auth::user();
